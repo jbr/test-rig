@@ -1,0 +1,51 @@
+ENV["RAILS_ENV"] = "test"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require 'test_help'
+
+class Test::Unit::TestCase
+  # self.use_transactional_fixtures = true
+
+  fixtures :all
+
+  def assert_with_smarter_message(*args)
+    assert_without_smarter_message(*args)
+  rescue Test::Unit::AssertionFailedError => e
+    message = message_for_backtrace(e.backtrace)
+    new_error = Test::Unit::AssertionFailedError.new message
+    new_error.set_backtrace(e.backtrace)
+    raise new_error
+  end
+  alias_method_chain :assert, :smarter_message
+    
+
+  def assert_false(assertion, message = nil)
+    assert !assertion, message
+  end
+
+  private
+
+
+  def message_for(assertion_type, assertion)
+    "``#{assertion}''" << case assertion_type
+    when 'assert_nil' then "``#{assertion}'' was not nil"
+    when 'assert_not_nil' then "``#{assertion}'' was nil"
+    when 'assert' then "``#{assertion}'' was not true"
+    else "#{assertion_type} for #{assertion}"
+    end
+  end
+  
+  def message_for_backtrace(backtrace)
+    line = line_at_backtrace(backtrace)
+    line.scan(/([a-z_]+)(?:\((.*)\)$|\s(.*)$)/).flatten.compact
+    assertion_type, assertion = line.scan(/([a-z_]+)(?:\((.*)\)$|\s(.*)$)/).flatten.compact
+    message_for assertion_type, assertion
+  end
+  
+  def line_at_backtrace(backtrace)
+     backtrace
+    first_test_line = backtrace.detect { |trace| trace =~ /_test\.rb/}
+    file, line = first_test_line.split(":")
+    File.open(file).readlines[line.to_i - 1].strip
+  end
+
+end
