@@ -13,8 +13,8 @@ module NeatoAssertions
 
   def self.included(klass)
     klass.class_eval do
-      alias_method_chain :method_missing, :neato_assertions
-      alias_method_chain :assert_block, :smarter_message
+      alias_method_chain :method_missing, :neato_assertions unless method_defined?(:method_missing_without_neato_assertions)
+      alias_method_chain :assert_block, :smarter_message unless method_defined?(:assert_block_without_smarter_message)
     end
   end
 
