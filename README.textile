@@ -20,8 +20,8 @@ Testing is definitionally an external act.  It is manipulating a system by its c
 (public api) and confirming that the behavior is as expected.  Passing a "modal verb":http://en.wikipedia.org/wiki/Modal_verb
 like "should" to the object in question does not describe this behavior.
 
-From a more practical perspective, defining rspec behaviors is way too much of a pain when we already have
-an easy way to define methods in ruby.
+From a more practical perspective, defining rspec behaviors is way too much of
+a pain when we already have an easy way to define methods in ruby.
 
 @Test::Unit@, particularly when combined with Context or Shoulda, is good
 enough for most things.  The only real issue is that you find yourself defining
