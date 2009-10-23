@@ -1,12 +1,10 @@
 h1. Test Rig
 
-h2. This project needs a new name.
-
 Test Rig provides two separate modules that work together.
 *Dynamic assertions* are flexible xUnit style matchers called dynamically.
 *Smarter message* supplements test failure messages with a several-line context
 of the test failure.
-This library works well with something like "Context":http://github.com/jeremymcanally/context.
+This library works well with something like "Context":http://github.com/jeremymcanally/context or Shoulda.
 
 h2. Dynamic assertions
 
