@@ -2,7 +2,10 @@ h1. Neato Assertions
 
 h2. This project needs a new name.
 
-Neato Assertions provides flexible xUnit style matchers dynamically.
+Neato Assertions provides two separate modules that work together.
+*Dynamic assertions* are flexible xUnit style matchers called dynamically.
+*Smarter message* supplements test failure messages with a several-line context
+of the test failure.
 This library works well with something like "Context":http://github.com/jeremymcanally/context.
 
 h2. Dynamic assertions
@@ -20,11 +23,14 @@ like "should" to the object in question does not describe this behavior.
 From a more practical perspective, defining rspec behaviors is way too much of a pain when we already have
 an easy way to define methods in ruby.
 
-@Test::Unit@, particularly when combined with Context or Shoulda, is good enough for most things.
-The only real issue is that you find yourself defining a whole lot of helper methods, like @assert_new_record@, @assert_valid@, @assert_red@
-*Dynamic assertions* fixes this.  With the fantastic power of method missing, assertions are generated on the fly.
-One of the really nice things about Rspec is that every matcher automatically gets an inverse (logical not) matcher.
-*Dynamic assertions* provides this as well.
+@Test::Unit@, particularly when combined with Context or Shoulda, is good
+enough for most things.  The only real issue is that you find yourself defining
+a whole lot of helper methods, like @assert_new_record@, @assert_valid@, @assert_red@
+*Dynamic assertions* fixes this.  With the fantastic power of method missing,
+assertions are generated on the fly.
+
+One of the really nice things about Rspec is that every matcher automatically
+gets an inverse (logical not) matcher. *Dynamic assertions* provides this as well.
 
 h3. Example
 
@@ -66,8 +72,11 @@ With Dynamic assertions: <code>assert_not_user "joe", @foo</code>
 
 h2. Smarter Message
 
-My bane: "false did not equal true" -- What you really want to know is what the variable names were or the method calls.
-If we have the stack trace, we should be able to show you the exact test that failed immediately.  Smarter Message does exactly that.
+My bane: "false did not equal true" -- What you really want to know is what
+the variable names were or the method calls.
+
+If we have the stack trace, we should be able to show you the exact test that
+failed immediately.  Smarter Message does exactly that.
 
 <pre><code>
 #demo_test.rb
