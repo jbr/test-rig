@@ -1,5 +1,4 @@
 require File.join(File.dirname(__FILE__), "test_helper")
-require 'dynamic_assertions'
 
 class Entry
   def published?() false end

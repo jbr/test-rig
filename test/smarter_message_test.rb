@@ -1,6 +1,4 @@
 require File.join(File.dirname(__FILE__), "test_helper")
-require 'smarter_message'
-
 
 class SmarterMessageTest < Test::Unit::TestCase
   include TestRig::SmarterMessage
@@ -11,7 +9,7 @@ class SmarterMessageTest < Test::Unit::TestCase
     [
       "<\"foo\"> expected but was\n<\"bar\">.",
       "a, b = 'foo', 'bar'",
-      "--> 10",
+      "-->  8",
       "assert_equal a, b"
     ].each {|snippet| assert_match snippet, e.message}
   end
@@ -20,19 +18,19 @@ class SmarterMessageTest < Test::Unit::TestCase
     e = assert_test_failure { assert false }
     [
       "backtrace includes only relevant lines",
-      "#{__FILE__}:20"
+      "#{__FILE__}:18"
     ].each {|snippet| assert_match snippet, e.backtrace.first}
   end
   
   test 'with four context lines' do
-    NeatoAssertions::SmarterMessage.context_lines = context = 4
+    TestRig::SmarterMessage.context_lines = context = 4
     e = assert_test_failure { assert false }
     context_output = e.message.split("\n").select{|line| line =~ /^(-->)?\s+[0-9]+:/}
     
     assert_equal context * 2 + 1, context_output.size
     assert_match "test 'with four context lines", context_output[2]
     assert_match /-->.+assert false/, context_output[context]
-    NeatoAssertions::SmarterMessage.context_lines = 2
+    TestRig::SmarterMessage.context_lines = 2
   end
 end
 
