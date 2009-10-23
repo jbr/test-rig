@@ -44,8 +44,10 @@ module NeatoAssertions
       start, finish = line - context, line + context
       lines = File.open(file).readlines
       (start..finish).map do |line_number|
-        "#{line_number == line.to_i ? "-->" : "   "} #{line_number + 1}: #{lines[line_number].rstrip}"
-      end.join("\n")
+        if lines[line_number]
+          "#{line_number == line.to_i ? "-->" : "   "} #{line_number + 1}: #{lines[line_number].rstrip}"
+        end
+      end.compact.join("\n")
     end
   end
 end

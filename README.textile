@@ -78,6 +78,8 @@ the variable names were or the method calls.
 If we have the stack trace, we should be able to show you the exact test that
 failed immediately.  Smarter Message does exactly that.
 
+h3. Example
+
 <pre><code>
 #demo_test.rb
 require File.join(File.dirname(__FILE__), "test_helper")
@@ -105,3 +107,10 @@ test demonstration(SmarterMessageTest) [./test/demo_test.rb:11]:
     12:   end
     13: 
 </code></pre>
+
+h3. Settings
+
+@NeatoAssertions::SmarterMessage.context_lines = 5@
+
+This defaults to two (yielding five lines; two context on each side + the actual line).
+If context_lines is zero, it will just print your failure line.
