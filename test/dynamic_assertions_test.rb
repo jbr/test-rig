@@ -1,7 +1,6 @@
 require 'test/unit'
-require 'rubygems'
-require 'activesupport'
-require 'neato_assertions'
+require 'test_helper'
+require '../lib/neato_assertions/dynamic_assertions'
 
 class Foo
   def wibble?
@@ -11,11 +10,13 @@ class Foo
   def bar?
     false
   end
+  
+  def string() "hello" end
 end
   
 
 class NeatoAssertionsTest < Test::Unit::TestCase
-  include NeatoAssertions
+  include ::NeatoAssertions::DynamicAssertions
   
   def test_neato_assertions
     foo = Foo.new
@@ -26,5 +27,7 @@ class NeatoAssertionsTest < Test::Unit::TestCase
     assert_not_bar foo
     assert_not_bar? foo
     assert_raise(Test::Unit::AssertionFailedError) {assert_bar foo}
+    
+    assert_string "hello", foo
   end
 end
