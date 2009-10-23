@@ -1,8 +1,8 @@
-h1. Neato Assertions
+h1. Test Rig
 
 h2. This project needs a new name.
 
-Neato Assertions provides two separate modules that work together.
+Test Rig provides two separate modules that work together.
 *Dynamic assertions* are flexible xUnit style matchers called dynamically.
 *Smarter message* supplements test failure messages with a several-line context
 of the test failure.
@@ -86,7 +86,7 @@ require File.join(File.dirname(__FILE__), "test_helper")
 require 'smarter_message'
 
 class DemoTest < Test::Unit::TestCase
-  include NeatoAssertions::SmarterMessage
+  include TestRig::SmarterMessage
   test "demonstration" do
     a = 'foo'
     b = 'bar'
@@ -110,7 +110,7 @@ test demonstration(DemoTest) [./test/demo_test.rb:11]:
 
 h3. Settings
 
-@NeatoAssertions::SmarterMessage.context_lines = 2 #the default@
+@TestRig::SmarterMessage.context_lines = 2 #the default@
 
 This defaults to two (yielding five lines; two context on each side + the actual line).
 Set this in your test_helper.

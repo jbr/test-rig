@@ -8,7 +8,7 @@ class Entry
 end
 
 class DynamicAssertionsTest < Test::Unit::TestCase
-  include NeatoAssertions::DynamicAssertions
+  include TestRig::DynamicAssertions
 
   def setup
     @entry = Entry.new

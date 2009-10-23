@@ -3,7 +3,7 @@ require 'smarter_message'
 
 
 class SmarterMessageTest < Test::Unit::TestCase
-  include NeatoAssertions::SmarterMessage
+  include TestRig::SmarterMessage
   
   test "smarter message includes the relevent snippet" do
     a, b = 'foo', 'bar'

@@ -1,13 +1,13 @@
 require 'active_support'
 
-module NeatoAssertions
+module TestRig
   module SmarterMessage
     mattr_accessor :context_lines
     @@context_lines = 2
     
     def self.included(klass)
       klass.class_eval do
-        alias_method_chain :assert_block, :smarter_message unless method_defined?(:assert_block_without_smarter_message)
+        alias_method_chain :assert_block, :smarter_message
       end
     end
     

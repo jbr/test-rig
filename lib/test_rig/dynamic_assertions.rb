@@ -1,5 +1,6 @@
 require 'active_support'
-module NeatoAssertions
+
+module TestRig
   module DynamicAssertions
     def self.included(klass)
       klass.class_eval do
