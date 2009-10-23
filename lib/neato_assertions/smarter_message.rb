@@ -1,3 +1,5 @@
+require 'active_support'
+
 module NeatoAssertions
   module SmarterMessage
     mattr_accessor :context_lines

@@ -1,6 +1,6 @@
-require 'test/unit'
-require 'test_helper'
-require '../lib/neato_assertions/smarter_message'
+require File.join(File.dirname(__FILE__), "test_helper")
+require 'smarter_message'
+
 
 class SmarterMessageTest < Test::Unit::TestCase
   include NeatoAssertions::SmarterMessage
@@ -14,7 +14,8 @@ class SmarterMessageTest < Test::Unit::TestCase
       [
         "<\"foo\"> expected but was\n<\"bar\">.",
         "assert_equal a, b",
-        "--> 12"
+        "--> 12",
+        "a = 'foo'"
       ].each {|snippet| assert_match snippet, e.message}
     end
   end
@@ -23,10 +24,10 @@ class SmarterMessageTest < Test::Unit::TestCase
     begin
       assert false
     rescue => e
-      assert_equal 2, e.backtrace.length
-      assert_match "backtrace includes only relevant lines", e.backtrace.first
-      assert_match "#{__FILE__}:24", e.backtrace.first
-      assert_match "#{__FILE__}:22", e.backtrace.last
+      [
+        "backtrace includes only relevant lines",
+        "#{__FILE__}:25"
+      ].each {|snippet| assert_match snippet, e.backtrace.first}
     end
   end
 end
