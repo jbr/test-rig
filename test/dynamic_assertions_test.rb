@@ -19,9 +19,7 @@ class DynamicAssertionsTest < Test::Unit::TestCase
   end
   
   test "positive assertion failure" do
-    assert_raise Test::Unit::AssertionFailedError do
-      assert_not_saved @entry
-    end
+    assert_test_failure { assert_not_saved @entry }
   end
   
   test "negative assertion" do
@@ -29,16 +27,22 @@ class DynamicAssertionsTest < Test::Unit::TestCase
   end
   
   test "negative assertion failure" do
-    assert_raise Test::Unit::AssertionFailedError do
-      assert_published @entry
-    end
+    assert_test_failure { assert_published @entry }
   end
   
-  test "positive equals assertion" do
+  test "positive equality assertion" do
     assert_user "joe", @entry
   end
   
-  test "negative equals assertion" do
+  test 'positive equality assertion failure' do
+    assert_test_failure { assert_user 'sue', @entry }
+  end
+  
+  test "negative equality assertion" do
     assert_not_user "sally", @entry
+  end
+  
+  test 'negative equality assertion failure' do
+    assert_test_failure { assert_not_user 'joe', @entry }
   end
 end
