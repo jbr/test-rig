@@ -97,7 +97,7 @@ end
 
 <pre><code>
 1) Failure:
-test demonstration(SmarterMessageTest) [./test/demo_test.rb:11]:
+test demonstration(DemoTest) [./test/demo_test.rb:11]:
 <"foo"> expected but was
 <"bar">.
 ./test/smarter_message_test.rb:11:in `test demonstration'
