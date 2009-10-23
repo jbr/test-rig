@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "test-rig"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{TestRig makes Test::Unit fun again}
+    gem.description = %Q{TestRig supplies dynamic assertions and contextual failure messages}
     gem.email = "github@jacobrothstein.com"
     gem.homepage = "http://github.com/jbr/test-rig"
     gem.authors = ["Jacob Rothstein"]
