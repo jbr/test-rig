@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
      "lib/test_rig.rb",
      "lib/test_rig/dynamic_assertions.rb",
      "lib/test_rig/smarter_message.rb",
+     "test-rig.gemspec",
      "test/dynamic_assertions_test.rb",
      "test/smarter_message_test.rb",
      "test/test_helper.rb"

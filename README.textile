@@ -6,6 +6,18 @@ Test Rig provides two separate modules that work together.
 of the test failure.
 This library works well with something like "Context":http://github.com/jeremymcanally/context or Shoulda.
 
+h2. Installation
+
+If necessary, install "Gemcutter":http://gemcutter.org.
+<pre><code>sudo gem install gemcutter && sudo gem tumble</code></pre>
+
+Install test-rig
+<pre><code>sudo gem install test-rig</code></pre>
+
+Add @require 'testrig'@ to test_helper.rb, and @include TestRig@ into @Test::Unit:TestCase@.
+If you only want dynamic assertions or smarter messages, @include TestRig::DynamicAssertions@
+or @include TestRig::SmarterMessage@ instead of @TestRig@.
+
 h2. Dynamic assertions
 
 h3. Background & Philosophy
