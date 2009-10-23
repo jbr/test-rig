@@ -110,7 +110,8 @@ test demonstration(SmarterMessageTest) [./test/demo_test.rb:11]:
 
 h3. Settings
 
-@NeatoAssertions::SmarterMessage.context_lines = 5@
+@NeatoAssertions::SmarterMessage.context_lines = 2 #the default@
 
 This defaults to two (yielding five lines; two context on each side + the actual line).
+Set this in your test_helper.
 If context_lines is zero, it will just print your failure line.
