@@ -9,8 +9,7 @@ end
 
 class DynamicAssertionsTest < Test::Unit::TestCase
   include NeatoAssertions::DynamicAssertions
-  def self.test(name, &blk) define_method(:"test #{name}", &blk) end
-  
+
   def setup
     @entry = Entry.new
   end

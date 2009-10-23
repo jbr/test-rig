@@ -69,4 +69,30 @@ h2. Smarter Message
 My bane: "false did not equal true" -- What you really want to know is what the variable names were or the method calls.
 If we have the stack trace, we should be able to show you the exact test that failed immediately.  Smarter Message does exactly that.
 
-More docs soon.
+<pre><code>
+#demo_test.rb
+require File.join(File.dirname(__FILE__), "test_helper")
+require 'smarter_message'
+
+class DemoTest < Test::Unit::TestCase
+  include NeatoAssertions::SmarterMessage
+  test "demonstration" do
+    a = 'foo'
+    b = 'bar'
+    assert_equal a, b
+  end
+end
+</code></pre>
+
+<pre><code>
+1) Failure:
+test demonstration(SmarterMessageTest) [./test/demo_test.rb:11]:
+<"foo"> expected but was
+<"bar">.
+./test/smarter_message_test.rb:11:in `test demonstration'
+    9:     a = 'foo'
+    10:     b = 'bar'
+--> 11:     assert_equal a, b
+    12:   end
+    13: 
+</code></pre>

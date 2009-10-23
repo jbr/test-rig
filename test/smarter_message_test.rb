@@ -5,7 +5,7 @@ require 'smarter_message'
 class SmarterMessageTest < Test::Unit::TestCase
   include NeatoAssertions::SmarterMessage
   
-  define_method :"test smarter message includes the relevent snippet" do
+  test "smarter message includes the relevent snippet" do
     begin
       a = 'foo'
       b = 'bar'
@@ -20,7 +20,7 @@ class SmarterMessageTest < Test::Unit::TestCase
     end
   end
 
-  define_method :"test backtrace includes only relevant lines" do
+  test "backtrace includes only relevant lines" do
     begin
       assert false
     rescue => e
