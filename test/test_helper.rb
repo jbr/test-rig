@@ -1,7 +1,8 @@
 require 'rubygems'
+$:.unshift File.instance_eval { expand_path join(dirname(__FILE__), "..", "lib") }
+
 require 'active_support'
 require 'test/unit'
-$:.unshift File.instance_eval { expand_path join(dirname(__FILE__), "..", "lib") }
 require 'test_rig'
 
 class Test::Unit::TestCase
