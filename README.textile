@@ -111,11 +111,11 @@ test demonstration(DemoTest) [./test/demo_test.rb:11]:
 <"foo"> expected but was
 <"bar">.
 ./test/smarter_message_test.rb:11:in `test demonstration'
-    9:     a = 'foo'
-    10:     b = 'bar'
---> 11:     assert_equal a, b
-    12:   end
-    13: 
+     9:    a = 'foo'
+    10:    b = 'bar'
+--> 11:    assert_equal a, b
+    12:  end
+    13:end
 </code></pre>
 
 h3. Settings
