@@ -8,6 +8,10 @@ module TestRig
       end
     end
     
+    def assert_not(*args)
+      assert !args.shift, *args
+    end
+    
     def method_missing_with_dynamic_assertions(method, *args)
       if method.to_s =~ /^assert_(not_)?([a-z_]+)/
         method_name = $2.to_sym

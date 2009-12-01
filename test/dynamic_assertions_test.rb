@@ -13,6 +13,14 @@ class DynamicAssertionsTest < Test::Unit::TestCase
     @entry = Entry.new
   end
   
+  test 'assert not' do
+    assert_not @entry.published?
+  end
+  
+  test 'assert not failure' do
+    assert_test_failure { assert_not @entry.saved? }
+  end
+  
   test "positive assertion" do
     assert_saved @entry
   end
