@@ -14,7 +14,7 @@ If necessary, install "Gemcutter":http://gemcutter.org.
 Install test-rig
 <pre><code>sudo gem install test-rig</code></pre>
 
-Add @require 'testrig'@ to test_helper.rb, and @include TestRig@ into @Test::Unit:TestCase@.
+Add @require 'test_rig'@ to test_helper.rb, and @include TestRig@ into @Test::Unit:TestCase@.
 If you only want dynamic assertions or smarter messages, @include TestRig::DynamicAssertions@
 or @include TestRig::SmarterMessage@ instead of @TestRig@.
 
