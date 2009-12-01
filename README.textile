@@ -80,6 +80,11 @@ In Test::Unit: <code>assert_not_equal "joe", @foo.user</code>
 
 With Dynamic assertions: <code>assert_not_user "joe", @foo</code>
 
+h4. Everything else
+
+<code>assert @foo.user.include?('j')</code>
+<code>assert_not @foo.user.include?('z')</code>
+
 h2. Smarter Message
 
 My bane: "false did not equal true" -- What you really want to know is what
