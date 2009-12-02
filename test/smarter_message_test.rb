@@ -32,6 +32,19 @@ class SmarterMessageTest < Test::Unit::TestCase
     assert_match /-->.+assert false/, context_output[context]
     TestRig::SmarterMessage.context_lines = 2
   end
+  
+  test 'backtrace scrubbing' do
+    TestRig::SmarterMessage.backtrace_regex = /test_helper/
+    e = assert_test_failure { assert false }
+    assert_equal 1, e.backtrace.size
+
+    TestRig::SmarterMessage.backtrace_regex = /assert_test_failure/
+    e = assert_test_failure { assert false }
+    assert_equal 1, e.backtrace.size
+
+    TestRig::SmarterMessage.backtrace_regex = nil
+    assert_equal /_test\.rb/, TestRig::SmarterMessage.backtrace_regex
+  end
 end
 
 

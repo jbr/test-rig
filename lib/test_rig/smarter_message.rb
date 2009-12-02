@@ -2,8 +2,13 @@ require 'active_support'
 
 module TestRig
   module SmarterMessage
+    mattr_writer :backtrace_regex
     mattr_accessor :context_lines
     @@context_lines = 2
+    
+    def self.backtrace_regex
+      @@backtrace_regex ||= /_test\.rb/
+    end
     
     def self.included(klass)
       klass.class_eval do
@@ -31,7 +36,10 @@ module TestRig
     end
 
     def relevant_traces(backtrace)
-      backtrace.select { |trace| trace =~ /_test\.rb/}.reject{|trace| trace =~ /#{File.basename(__FILE__)}/}
+      backtrace.select do |trace|
+        trace =~ TestRig::SmarterMessage.backtrace_regex &&
+          trace !~ /#{File.basename(__FILE__)}/
+      end
     end
 
     def first_relevant_trace(backtrace)
