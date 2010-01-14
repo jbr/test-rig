@@ -4,6 +4,8 @@ class Entry
   def published?() false end
   def saved?() true end
   def user() "joe" end
+  def something_nil() nil end
+  def something_not_nil() "not nil" end
 end
 
 class DynamicAssertionsTest < Test::Unit::TestCase
@@ -51,5 +53,13 @@ class DynamicAssertionsTest < Test::Unit::TestCase
   
   test 'negative equality assertion failure' do
     assert_test_failure { assert_not_user 'joe', @entry }
+  end
+  
+  test "assert no" do
+    assert_no_something_nil @entry
+  end
+  
+  test "assert no failure" do
+    assert_test_failure { assert_no_something_not_nil @entry }
   end
 end

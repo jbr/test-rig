@@ -13,7 +13,14 @@ module TestRig
     end
     
     def method_missing_with_dynamic_assertions(method, *args)
-      if method.to_s =~ /^assert_(not_)?([a-z_]+)/
+      case method.to_s
+      when /^assert_no_([a-z_]+)$/
+        method_name = $1.to_sym
+        if args.first.respond_to? method_name
+          assert_nil args.first.send(method_name)
+          return
+        end
+      when /^assert_(not_)?([a-z_]+)$/
         method_name = $2.to_sym
         if args.length == 1 && args.first.respond_to?(:"#{method_name}?")
           actual = args.first.send :"#{method_name}?"
