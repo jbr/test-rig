@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{test-rig}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jacob Rothstein"]
-  s.date = %q{2009-12-02}
+  s.date = %q{2010-01-14}
   s.description = %q{TestRig supplies dynamic assertions and contextual failure messages}
   s.email = %q{github@jacobrothstein.com}
   s.extra_rdoc_files = [
