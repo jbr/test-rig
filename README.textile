@@ -64,6 +64,14 @@ In Test::Unit: <code>assert !@foo.published?</code> or, if you've defined @asser
 
 With Dynamic assertions: <code>assert_not_published @foo</code>
 
+h4. Nil assertions
+
+In Rspec: @@foo.something.should be_nil@
+
+In Test::Unit: @assert_nil @foo.something@
+
+With Dynamic assertions: @assert_no_something @foo@
+
 h4. Positive equality assertions
 
 In Rspec: <code>@foo.user.should == "joe"</code>
