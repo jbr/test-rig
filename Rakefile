@@ -4,7 +4,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "test-rig"
+    gem.name = "test_rig"
     gem.summary = %Q{TestRig makes Test::Unit fun again}
     gem.description = %Q{TestRig supplies dynamic assertions and contextual failure messages}
     gem.email = "github@jacobrothstein.com"
